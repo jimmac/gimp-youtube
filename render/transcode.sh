@@ -8,3 +8,8 @@ for dir in `find . -type d`
     fi
   done
 
+
+#gst-launch-1.0 multifilesrc location="$dir/%04d.png" index=1 caps="image/png,framerate=(fraction)25/1" ! pngdec ! videoconvert ! videoscale ! video/x-raw ! videorate ! vp8enc threads=12 target-bitrate=3000000 ! webmmux ! filesink location=$dir.webm
+
+
+#gst-launch-1.0 webmmux name=mux ! filesink location="intro-unified.webm"    "file:///home/jimmac/gfx/fun/gimp/youtube/snd/gimp-intro.flac" ! decodebin ! audioconvert ! vorbisenc bitrate=96000 ! mux.     multifilesrc location="intro-unified/%04d.png" index=1 caps="image/png,framerate=(fraction)25/1" ! pngdec ! videoconvert ! videoscale ! video/x-raw ! videorate ! vp8enc threads=12 target-bitrate=300000 ! mux.
